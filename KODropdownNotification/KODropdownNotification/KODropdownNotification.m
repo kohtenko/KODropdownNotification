@@ -25,8 +25,7 @@
     if ([object isKindOfClass: KODropdownNotification.class]){
         self = (KODropdownNotification *)object;
         self.notificationHeight = self.bounds.size.height;
-    }
-    if(self = [super init]){
+    }else if(self = [super init]){
     }
     self.dismissOnSwipe = YES;
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
