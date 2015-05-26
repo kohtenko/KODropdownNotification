@@ -16,6 +16,9 @@
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
+
+@property (nonatomic, strong) NSTimer *hideTimer;
+
 @end
 
 static BOOL showOneOnly;
@@ -41,6 +44,11 @@ static BOOL showOneOnly;
 
 
 - (void)showAnimated:(BOOL)animated{
+    [self showAnimated:animated hideAfter:0.0f];
+}
+
+- (void)showAnimated:(BOOL)animated hideAfter:(NSTimeInterval)seconds{
+    
     UIView *view = [UIApplication sharedApplication].keyWindow;
     [view addSubview:self];
     NSDictionary *views = @{@"notification" : self};
@@ -90,9 +98,18 @@ static BOOL showOneOnly;
                          completion:^(BOOL finished) {
                              finishBlock();
                          }];
+    
+    if (seconds > 0) {
+        self.hideTimer = [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(hideTimerFired) userInfo:nil repeats:NO];
+    }
+}
+
+- (void)hideTimerFired{
+    [self dismissAnimated:YES];
 }
 
 - (void)dismissAnimated:(BOOL)animated{
+    [self.hideTimer invalidate];
     self.topConstraint.constant = -self.notificationHeight;
     if (!animated)
         [self.superview layoutIfNeeded];

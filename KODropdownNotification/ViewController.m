@@ -33,7 +33,7 @@
     notification.label2.text = @"Some Text here too";
     notification.delegate = self;
     notification.dismissOnTap = NO;
-    [notification showAnimated:YES];
+    [notification showAnimated:YES hideAfter:2];
 }
 
 - (void)dropdownDidDismissed:(KODropdownNotification *)dropdown{

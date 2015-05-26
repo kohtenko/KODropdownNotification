@@ -60,6 +60,14 @@
 - (void)showAnimated:(BOOL)animated;
 
 /**
+ *  Shows notification view in UIApplication keyWindow and hides it after *seconds*
+ *
+ *  @param animated animated pass YES if you want appearance animated, otherwise pass NO
+ *  @param seconds  pass time before notification hide. Pass 0.0f to prevent hide or call - (void)showAnimated:(BOOL)animated;
+ */
+- (void)showAnimated:(BOOL)animated hideAfter:(NSTimeInterval)seconds;
+
+/**
  *  Hides notification and removes it from keyWindow
  *
  *  @param animated pass YES if you want appearance animated, otherwise pass NO
