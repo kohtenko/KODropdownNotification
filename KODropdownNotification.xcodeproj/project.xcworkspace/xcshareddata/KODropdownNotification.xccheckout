@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>21881238-B035-438A-A8DA-AB1E3577CB9A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KODropdownNotification</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E5806835ED07668213E1F59D5542137E69912AE7</key>
+		<string>https://github.com/kohtenko/KODropdownNotification</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KODropdownNotification.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E5806835ED07668213E1F59D5542137E69912AE7</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kohtenko/KODropdownNotification</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E5806835ED07668213E1F59D5542137E69912AE7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E5806835ED07668213E1F59D5542137E69912AE7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KODropdownNotification</string>
+		</dict>
+	</array>
+</dict>
+</plist>

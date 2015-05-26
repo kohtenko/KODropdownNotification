@@ -10,13 +10,13 @@ Pod::Spec.new do |s|
 
 
   s.name         = "KODropdownNotification"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "KODropdownNotification is simply customizable dropdown notifications"
 
   s.description  = "KODropdownNotification is simply customizable dropdown notifications. Just create subclass of KODropdownNotification and load your own custom view. Checkout the example project to clarifications."
 
   s.homepage     = "https://github.com/kohtenko/KODropdownNotification"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
+  s.screenshots  = "https://raw.github.com/kohtenko/KODropdownNotification/master/anamitionExample.gif"
 
   s.license          = "MIT"
 
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
    s.platform     = :ios, "7.0"
 
 
-  s.source       = { :git => "https://github.com/kohtenko/KODropdownNotification.git", :tag => "1.0.1" }
+  s.source       = { :git => "https://github.com/kohtenko/KODropdownNotification.git", :tag => "1.0.2" }
 
 
   s.source_files  = "KODropdownNotification/KODropdownNotification/*.{h,m}"

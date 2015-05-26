@@ -20,7 +20,6 @@
 
 @property (nonatomic) CGFloat notificationHeight;
 
-@property (nonatomic) BOOL dismissOnTap;
 @property (nonatomic) BOOL dismissOnSwipe;
 
 @property (nonatomic, weak) id<KODropdownNotificationDelegate> delegate;

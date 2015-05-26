@@ -1,6 +1,4 @@
 # KODropdownNotification
-
-[![CI Status](http://img.shields.io/travis/Kokhtenko, Oleg/KODropdownNotification.svg?style=flat)](https://travis-ci.org/Kokhtenko, Oleg/KODropdownNotification)
 [![Version](https://img.shields.io/cocoapods/v/KODropdownNotification.svg?style=flat)](http://cocoadocs.org/docsets/KODropdownNotification)
 [![License](https://img.shields.io/cocoapods/l/KODropdownNotification.svg?style=flat)](http://cocoadocs.org/docsets/KODropdownNotification)
 [![Platform](https://img.shields.io/cocoapods/p/KODropdownNotification.svg?style=flat)](http://cocoadocs.org/docsets/KODropdownNotification)
@@ -13,10 +11,14 @@ Popup UIView for iPhone/iPad in both orientations with nice effect.
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-- Create instance with static method `[KODropdownNotification popupView]`;
-- Add your custom view to `popupInstance.handleView` as subview;
-- In your ViewController override method `willAnimateRotationToInterfaceOrientation:duration:` and call `[popupInstance willRotateToOrientation:toInterfaceOrientation withDuration:duration];`;
-- Call methods `[popupInstance show];` and `[popupInstance hideAnimated:]` to show or hide your popup!
+- Create your own subclass of `KODropdownNotification`;
+- Create your own XIB file with your class in it;
+- Create instance of your class using `initWithNibName:` initializer
+- Customize look and feel of your notification using:
+  - `notificationHeight` (setup from XIB by default)
+  - `dismissOnSwipe` to allow user swipe it up as system notification
+- You can override `delegate` property in your subclass and call any actions you need (Buttons, Gestures, etc.);
+- Use `showAnimated:` and `dismissAnimated` to show or hide your notification;
 
 
 ## Requirements
@@ -26,6 +28,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 KODropdownNotification is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
+I
     pod "KODropdownNotification"
 
 ## Author
