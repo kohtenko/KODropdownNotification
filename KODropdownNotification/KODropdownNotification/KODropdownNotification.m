@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSLayoutConstraint *topConstraint;
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @end
 
 @implementation KODropdownNotification
@@ -26,8 +27,12 @@
         self = (KODropdownNotification *)object;
         self.notificationHeight = self.bounds.size.height;
     }else if(self = [super init]){
+        self.notificationHeight = 64;
     }
+    self.dismissOnTap = YES;
     self.dismissOnSwipe = YES;
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
+    [self addGestureRecognizer:self.tapGesture];
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     return self;
 }
@@ -98,6 +103,21 @@
     }else{
         [self removeGestureRecognizer:self.panGesture];
         self.panGesture = nil;
+    }
+}
+
+- (void)handleTap{
+    switch (self.tapGesture.state) {
+        case UIGestureRecognizerStateRecognized: {
+            if ([self.delegate respondsToSelector:@selector(dropdownDidTapped:)])
+                [self.delegate dropdownDidTapped:self];
+            if (self.dismissOnTap)
+                [self dismissAnimated:YES];
+            break;
+        }
+        default: {
+            break;
+        }
     }
 }
 

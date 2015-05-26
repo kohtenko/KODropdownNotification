@@ -10,7 +10,7 @@
 
 @class MyOwnNotification;
 @protocol MyOwnNotificationDelegate <KODropdownNotificationDelegate>
-
+@optional
 - (void)rightButtonPressedOnNotification:(MyOwnNotification *)notification;
 
 @end
