@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @end
 
+static BOOL showOneOnly;
+
 @implementation KODropdownNotification
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil{
@@ -66,16 +68,28 @@
     [view addConstraint:self.topConstraint];
     [view layoutIfNeeded];
     self.topConstraint.constant = 0;
-    if (!animated)
+    void (^finishBlock)() = ^void() {
+        if (showOneOnly)
+            for (UIView *v in view.subviews) {
+                if ([v isKindOfClass:KODropdownNotification.class] && v != self)
+                    [(KODropdownNotification *)v dismissAnimated:NO];
+            }
+    };
+    
+    
+    if (!animated){
         [view layoutIfNeeded];
-    else
+        finishBlock();
+    }else
         [UIView animateWithDuration:0.3
                               delay:0
                             options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{
                              [view layoutIfNeeded];
                          }
-                         completion:nil];
+                         completion:^(BOOL finished) {
+                             finishBlock();
+                         }];
 }
 
 - (void)dismissAnimated:(BOOL)animated{
@@ -164,5 +178,14 @@
             break;
     }
 }
+
++ (BOOL)showOnlyOneNotification{
+    return showOneOnly;
+}
+
++ (void)setShowOnlyOneNotification:(BOOL)value{
+    showOneOnly = value;
+}
+
 
 @end

@@ -66,4 +66,20 @@
  */
 - (void)dismissAnimated:(BOOL)animated;
 
+/**
+ *  Indicates if several notifications can be presented one above another.
+ *
+ *  Default value is NO
+ *
+ *  @return YES if only one posible, NO otherwise
+ */
++ (BOOL)showOnlyOneNotification;
+
+/**
+ *  Indicates if several notifications can be presented one above another.
+ *
+ *  @param value YES if only one posible, NO otherwise
+ */
++ (void)setShowOnlyOneNotification:(BOOL)value;
+
 @end
