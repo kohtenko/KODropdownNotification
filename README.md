@@ -3,7 +3,9 @@
 [![License](https://img.shields.io/cocoapods/l/KODropdownNotification.svg?style=flat)](http://cocoadocs.org/docsets/KODropdownNotification)
 [![Platform](https://img.shields.io/cocoapods/p/KODropdownNotification.svg?style=flat)](http://cocoadocs.org/docsets/KODropdownNotification)
 
-Popup UIView for iPhone/iPad in both orientations with nice effect. 
+Fully customizable notification view for iOS.
+
+Uses Autolayout 
 
 ![Output sample](https://raw.github.com/kohtenko/KODropdownNotification/master/anamitionExample.gif)
 
@@ -28,8 +30,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 KODropdownNotification is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-I
-    pod "KODropdownNotification"
+    `pod "KODropdownNotification"`
 
 ## Author
 
