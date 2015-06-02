@@ -34,6 +34,7 @@ static BOOL showOneOnly;
     }else if(self = [super init]){
         self.notificationHeight = 64;
     }
+    self.hideStatusBar = YES;
     self.dismissOnTap = YES;
     self.dismissOnSwipe = YES;
     self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
@@ -49,7 +50,7 @@ static BOOL showOneOnly;
 
 - (void)showAnimated:(BOOL)animated hideAfter:(NSTimeInterval)seconds{
     
-    UIView *view = [UIApplication sharedApplication].keyWindow;
+    UIWindow *view = [UIApplication sharedApplication].keyWindow;
     [view addSubview:self];
     NSDictionary *views = @{@"notification" : self};
     if(!self.heightConstraint){
@@ -76,6 +77,10 @@ static BOOL showOneOnly;
     [view addConstraint:self.topConstraint];
     [view layoutIfNeeded];
     self.topConstraint.constant = 0;
+    
+    if (self.hideStatusBar)
+        view.windowLevel = UIWindowLevelStatusBar;
+    
     void (^finishBlock)() = ^void() {
         if (showOneOnly)
             for (UIView *v in view.subviews) {
@@ -83,7 +88,6 @@ static BOOL showOneOnly;
                     [(KODropdownNotification *)v dismissAnimated:NO];
             }
     };
-    
     
     if (!animated){
         [view layoutIfNeeded];
@@ -113,6 +117,20 @@ static BOOL showOneOnly;
     self.topConstraint.constant = -self.notificationHeight;
     if (!animated)
         [self.superview layoutIfNeeded];
+
+    if (self.hideStatusBar){
+        UIWindow *view = [UIApplication sharedApplication].keyWindow;
+        BOOL returnLevel = YES;
+        for (UIView *v in view.subviews) {
+            if ([v isKindOfClass:KODropdownNotification.class] && v != self){
+                returnLevel = NO;
+                break;
+            }
+        }
+        if (returnLevel)
+            view.windowLevel = UIWindowLevelNormal;
+    }
+    
     [UIView animateWithDuration:0.3
                           delay:0
                         options:UIViewAnimationOptionCurveEaseInOut

@@ -31,6 +31,12 @@
 @interface KODropdownNotification : UIView
 
 /**
+ *  This value indicates whether should statusBar be hidden during notification displayed or not
+ *  *IMPORTANT* requires `UIViewControllerBasedStatusBarAppearance` key `NO` in Info.plist of your app
+ */
+@property (nonatomic) BOOL hideStatusBar;
+
+/**
  *  Height of notification. By default retrived from XIB. If no XIB provided default is 64
  */
 @property (nonatomic) CGFloat notificationHeight;
