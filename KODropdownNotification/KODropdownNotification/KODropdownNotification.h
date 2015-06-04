@@ -96,4 +96,11 @@
  */
 + (void)setShowOnlyOneNotification:(BOOL)value;
 
+/**
+ *  Static method to dissmiss all notifications from your screen
+ *
+ *  @param animated value indicates whether use animation or not
+ */
++ (void)dismissAllNotificationsAnimated:(BOOL) animated;
+
 @end

@@ -225,5 +225,12 @@ static BOOL showOneOnly;
     showOneOnly = value;
 }
 
++ (void)dismissAllNotificationsAnimated:(BOOL)animated{
+    UIWindow *view = [UIApplication sharedApplication].keyWindow;
+    for (UIView *v in view.subviews) {
+        if ([v isKindOfClass:KODropdownNotification.class])
+            [(KODropdownNotification *)v dismissAnimated:animated];
+    }
+}
 
 @end
