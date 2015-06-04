@@ -119,17 +119,20 @@ static BOOL showOneOnly;
         [self.superview layoutIfNeeded];
 
     if (self.hideStatusBar){
-        UIWindow *view = [UIApplication sharedApplication].keyWindow;
-        BOOL returnLevel = YES;
-        for (UIView *v in view.subviews) {
-            if ([v isKindOfClass:KODropdownNotification.class] && v != self){
-                returnLevel = NO;
-                break;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIWindow *view = [UIApplication sharedApplication].keyWindow;
+            BOOL returnLevel = YES;
+            for (UIView *v in view.subviews) {
+                if ([v isKindOfClass:KODropdownNotification.class] && v != self){
+                    returnLevel = NO;
+                    break;
+                }
             }
-        }
-        if (returnLevel)
-            view.windowLevel = UIWindowLevelNormal;
+            if (returnLevel)
+                view.windowLevel = UIWindowLevelNormal;
+        });
     }
+
     
     [UIView animateWithDuration:0.3
                           delay:0
