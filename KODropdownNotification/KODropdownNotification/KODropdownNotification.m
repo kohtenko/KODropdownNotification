@@ -79,7 +79,7 @@ static BOOL showOneOnly;
     self.topConstraint.constant = 0;
     
     if (self.hideStatusBar)
-        view.windowLevel = UIWindowLevelStatusBar;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     void (^finishBlock)() = ^void() {
         if (showOneOnly)
@@ -129,7 +129,7 @@ static BOOL showOneOnly;
                 }
             }
             if (returnLevel)
-                view.windowLevel = UIWindowLevelNormal;
+                [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         });
     }
 
