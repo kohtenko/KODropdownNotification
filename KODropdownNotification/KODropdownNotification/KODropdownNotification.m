@@ -78,8 +78,10 @@ static BOOL showOneOnly;
     [view layoutIfNeeded];
     self.topConstraint.constant = 0;
     
-    if (self.hideStatusBar)
+    if (self.hideStatusBar){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateStatusBar" object:nil userInfo:@{@"style" : @(UIStatusBarStyleDefault)}];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    }
     
     void (^finishBlock)() = ^void() {
         if (showOneOnly)
@@ -128,8 +130,10 @@ static BOOL showOneOnly;
                     break;
                 }
             }
-            if (returnLevel)
+            if (returnLevel){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateStatusBar" object:nil userInfo:@{@"style" : @(UIStatusBarStyleLightContent)}];
                 [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            }
         });
     }
 
